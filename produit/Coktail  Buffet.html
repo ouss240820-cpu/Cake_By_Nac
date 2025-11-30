@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SISI Cake — Cake by NAC</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f8f5f1;
+  --cream-dark: #e8e1d9;
+  --gold-soft: #c9b8a6;
+  --white: #ffffff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color:#4a4a4a; }
+
+header { padding: 25px; text-align: center; background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+header h1 { font-size: 2.4rem; font-weight: 600; }
+.small { font-size: 0.95rem; color:#777; }
+
+main { max-width: 1050px; margin: 40px auto; background: var(--white); padding: 30px; border-radius: 20px; box-shadow: 0 12px 35px rgba(0,0,0,0.07); }
+.product-container { display: flex; gap: 35px; flex-wrap: wrap; }
+
+.product-image { flex:1 1 420px; position: relative; }
+.product-image img { width: 100%; border-radius: 18px; object-fit: cover; margin-bottom: 12px; transition: transform .3s ease; }
+.product-image img:hover { transform: scale(1.02); }
+.gallery-images { display: flex; gap: 12px; }
+.gallery-images img { width: 75px; height: 75px; border-radius: 10px; object-fit: cover; cursor: pointer; border: 2px solid transparent; transition: 0.25s; }
+.gallery-images img.active { border-color: var(--gold-soft); transform: scale(1.05); }
+
+.arrow { position:absolute; top:50%; transform: translateY(-50%); background: var(--gold-soft); color:#fff; font-size: 1.8rem; padding: 12px; border-radius:50%; cursor:pointer; user-select:none; box-shadow:0 4px 12px rgba(0,0,0,0.15); transition:0.25s; }
+.arrow-left { left:-12px; } 
+.arrow-right { right:-12px; }
+.arrow:hover { transform: translateY(-50%) scale(1.12); }
+
+.product-details { flex:1 1 420px; display:flex; flex-direction:column; gap:15px; }
+.product-details h2 { font-size:2.1rem; font-weight:600; }
+.meta { display:flex; gap:20px; }
+.meta div { background: var(--cream); padding: 8px 16px; border-radius: 999px; }
+.description { margin-top:10px; line-height:1.5; }
+
+.order-panel { background: var(--cream); margin-top: 30px; padding: 25px; border-radius: 16px; box-shadow:0 4px 15px rgba(0,0,0,0.06); }
+.order-panel h3 { margin-bottom: 18px; font-size:1.4rem; }
+.order-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+
+label { font-weight:600; font-size:0.95rem; margin-bottom:6px; display:block; }
+input, select, textarea { width:100%; padding:12px; border-radius:10px; border:1px solid var(--cream-dark); font-size:0.95rem; background:#fff; }
+textarea { resize: vertical; }
+.full { grid-column:1/-1; }
+
+.button, .payment-button {
+  display:inline-block;
+  padding: 14px 26px;
+  background: var(--gold-soft);
+  color:#fff;
+  border-radius:999px;
+  font-weight:600;
+  text-align:center;
+  margin-top:10px;
+  text-decoration:none;
+  transition:0.3s;
+  cursor:pointer;
+}
+.button:hover, .payment-button:hover { background:#b6a18a; }
+
+footer { text-align:center; padding:25px; margin-top:40px; background: var(--white); box-shadow:0 -2px 10px rgba(0,0,0,0.05); }
+
+@media(max-width:880px) {
+  .product-container { flex-direction:column; }
+  .product-details { text-align:center; }
+  .meta { justify-content:center; }
+  .gallery-images { justify-content:center; }
+  .order-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>Cake by NAC</h1>
+  <p class="small">Gâteaux sur-mesure — Instagram : @cakebynac</p>
+</header>
+
+<main>
+<div class="product-container">
+  <div class="product-image">
+    <span class="arrow arrow-left">&#10094;</span>
+    <span class="arrow arrow-right">&#10095;</span>
+    <img id="main-image" src="../images/buffet.png">
+    <div class="gallery-images">
+      <img src="../images/buffet.png" class="active">
+      <img src="../images/c1.png">
+      <img src="../images/c2.png">
+      <img src="../images/C4.png">
+      <img src="../images/c3.png">
+    </div>
+  </div>
+
+  <div class="product-details">
+    <h2>✨ SISI Cake / Buffet ✨</h2>
+    <div class="meta">
+      <div>Parts : <strong id="display-parts">8</strong></div>
+      <div>Prix : <strong id="display-price">80 €</strong></div>
+    </div>
+    <p class="description">
+      Un gâteau raffiné, moderne et élégant, parfait pour célébrer chaque événement spécial.
+      Décoration délicate, finitions luxueuses et saveur sur-mesure.
+    </p>
+  </div>
+</div>
+
+<div class="order-panel">
+<h3>Réserver votre gâteau</h3>
+
+<form action="https://formsubmit.co/TON-EMAIL-ICI" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://ton-site.com/merci.html">
+
+  <div class="order-grid">
+    <div>
+      <label>Nom complet</label>
+      <input type="text" name="Nom" required>
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="email" name="Email" required>
+    </div>
+
+    <div>
+      <label>Téléphone</label>
+      <input type="text" name="Téléphone" required>
+    </div>
+
+    <div>
+      <label>Nombre de parts</label>
+      <select id="parts-select" name="Parts">
+        <option value="6">6</option>
+        <option value="8" selected>8</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Date</label>
+      <input type="date" name="Date" required>
+    </div>
+
+    <div>
+      <label>Heure</label>
+      <input type="time" name="Heure">
+    </div>
+
+    <div>
+      <label>Type de gâteau</label>
+      <select id="cake-type" name="Type de gâteau" required>
+        <option value="Buffet / Cocktail">Buffet / Cocktail</option>
+        <option value="Wedding Cake">Wedding Cake</option>
+        <option value="Number Cake">Number Cake</option>
+        <option value="Fruit Cake">Fruit Cake</option>
+        <option value="Chocolat Cake">Chocolat Cake</option>
+      </select>
+    </div>
+
+    <div class="full">
+      <label>Détails / Notes</label>
+      <textarea name="Message" rows="3" placeholder="Ex : allergies, message personnalisé…" required></textarea>
+    </div>
+
+    <div class="full">
+      <p>Total : <strong id="display-price-form">80 €</strong></p>
+      <p>Acompte 40% : <strong id="display-acompte">32 €</strong></p>
+      <a id="pay-acompte" href="#" class="payment-button" target="_blank">Payer 40% maintenant</a>
+    </div>
+
+    <div class="full">
+      <button class="button" type="submit">Réserver maintenant</button>
+    </div>
+  </div>
+</form>
+</div>
+
+</main>
+
+<footer>
+<p>© 2025 Cake by NAC — Instagram : @cakebynac</p>
+</footer>
+
+<script>
+// Variables
+const partsSelect = document.getElementById('parts-select');
+const pricePerPart = 10;
+const acompteDisplay = document.getElementById('display-acompte');
+const paypalButton = document.getElementById('pay-acompte'); // ID du bouton PayPal
+const paypalEmail = "yanibeats1@gmail.com"; // <- ton email PayPal
+
+// Fonction pour mettre à jour le prix et le lien PayPal
+function updatePrice() {
+  const parts = parseInt(partsSelect.value);
+  const total = parts * pricePerPart;
+  const acompte = Math.round(total * 0.4 * 100) / 100;
+
+  // Affiche le montant
+  document.getElementById('display-price-form').textContent = total + " €";
+  acompteDisplay.textContent = acompte + " €";
+
+  // Met à jour le lien PayPal
+  paypalButton.href = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=EUR&amount=${acompte}&item_name=Acompte+gâteau`;
+}
+
+// Met à jour le prix au changement de nombre de parts
+partsSelect.addEventListener('change', updatePrice);
+updatePrice();
+
+/* Gallery / Arrows */
+const mainImage = document.getElementById('main-image');
+const thumbs = document.querySelectorAll('.gallery-images img');
+let current = 0;
+
+function show(i){
+  current = i;
+  mainImage.src = thumbs[i].src;
+  thumbs.forEach(t => t.classList.remove('active'));
+  thumbs[i].classList.add('active');
+}
+
+thumbs.forEach((img,i)=> img.addEventListener('click',()=> show(i)));
+document.querySelector('.arrow-left').onclick = () => show((current - 1 + thumbs.length) % thumbs.length);
+document.querySelector('.arrow-right').onclick = () => show((current + 1) % thumbs.length);
+</script>
+
+</body>
+</html>

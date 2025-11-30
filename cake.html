@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cake by NAC — Gâteaux sur-mesure</title>
+  <meta name="description" content="Cake by NAC — créations pâtissières sur-mesure. Wedding cakes, number cakes, drip cakes, verrines et buffets.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Theme CSS (crème / blanc) -->
+  <style>
+    :root{
+      --cream-1:#fffaf2;   /* fond principal */
+      --cream-2:#f7efe6;   /* panels */
+      --accent:#e9d9c7;    /* accents */
+      --muted:#7a6f69;     /* texte secondaire */
+      --dark:#443a36;      /* texte principal */
+      --white:#ffffff;
+      --glass: rgba(255,255,255,0.6);
+    }
+
+    /* Reset minimal */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background: linear-gradient(180deg,var(--cream-1) 0%, #fffefa 100%);
+      color:var(--dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      overflow-x:hidden;
+      padding-bottom:48px;
+      animation: pageFade 600ms ease both;
+    }
+
+    @keyframes pageFade{
+      from{opacity:0; transform: translateY(6px)}
+      to{opacity:1; transform:none}
+    }
+
+    /* Container */
+    .wrap{max-width:1200px;margin:0 auto;padding:22px;}
+
+    /* Header with inline SVG logo */
+    header.site-header{
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      background: linear-gradient(180deg,var(--white), rgba(255,255,255,0.95));
+      border-radius:14px;
+      margin:18px;
+      box-shadow: 0 6px 20px rgba(68,58,54,0.06);
+    }
+
+    /* Logo block */
+    .logo {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--dark);
+    }
+    .logo svg{width:64px;height:64px}
+    .logo .title{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .logo .title .brand{
+      font-family:'Playfair Display', serif;
+      font-size:1.6rem;
+      font-weight:700;
+      color:var(--dark);
+      letter-spacing:0.6px;
+    }
+    .logo .title .tag{
+      font-size:0.85rem;
+      color:var(--muted);
+    }
+
+    /* Top actions */
+    .top-actions{display:flex;gap:10px;align-items:center}
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      background:var(--accent);
+      color:var(--dark);
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(68,58,54,0.06);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .btn.secondary{
+      background:transparent;
+      border:1px solid rgba(68,58,54,0.06);
+      color:var(--muted);
+      font-weight:500;
+    }
+    .btn:hover{ transform:translateY(-4px); box-shadow: 0 12px 28px rgba(68,58,54,0.08) }
+
+    /* Hero with decorative shapes */
+    .hero{
+      margin:26px 18px;
+      border-radius:20px;
+      padding:48px 22px;
+      background: linear-gradient(135deg, var(--cream-2), rgba(255,255,255,0.85));
+      box-shadow: 0 12px 40px rgba(68,58,54,0.06);
+      position:relative;
+      overflow:hidden;
+    }
+    /* decorative floating shapes */
+    .hero::before, .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter: blur(36px);
+      opacity:0.34;
+    }
+    .hero::before{
+      width:260px;height:260px;background:linear-gradient(90deg,#fffdf9, var(--accent));
+      right:-60px; top:-80px;
+      transform: rotate(20deg);
+    }
+    .hero::after{
+      width:180px;height:180px;background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(230,220,210,0.6));
+      left:-40px; bottom:-60px;
+    }
+
+    .hero-inner{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:center;
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    .hero h1{
+      font-family:'Playfair Display', serif;
+      margin:0 0 12px;
+      font-size:2.6rem;
+      color:var(--dark);
+      line-height:1.02;
+    }
+    .hero p.lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width:62ch;
+    }
+
+    .hero .cta-row{display:flex;gap:12px;align-items:center}
+
+    .hero-illustration{
+      width:100%;
+      border-radius:14px;
+      padding:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(249,246,244,0.8));
+      box-shadow: 0 8px 28px rgba(68,58,54,0.05);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transform: translateY(0);
+      transition: transform .6s cubic-bezier(.2,.9,.3,1);
+    }
+    .hero-illustration img{max-width:100%;height:260px;object-fit:cover;border-radius:10px}
+
+    .hero-illustration:hover{ transform: translateY(-8px) }
+
+    /* Gallery grid */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      gap:20px;
+      padding:22px;
+      margin: 18px;
+      max-width:1200px;
+    }
+    .card{
+      background:var(--white);
+      border-radius:14px;
+      padding:12px;
+      box-shadow:0 8px 22px rgba(68,58,54,0.05);
+      transition: transform .24s ease, box-shadow .24s ease;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      overflow:hidden;
+    }
+    .card:hover{ transform:translateY(-8px); box-shadow:0 18px 38px rgba(68,58,54,0.08) }
+
+    .card .media{
+      width:100%;
+      height:200px;
+      border-radius:10px;
+      overflow:hidden;
+      background:linear-gradient(180deg, #fff, #f7f2ef);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .card .media img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .card h3{margin:0;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--dark)}
+    .card .meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-weight:600}
+    .card .meta .parts{background:var(--cream-1);padding:6px 10px;border-radius:999px;color:var(--dark);font-weight:600}
+
+    /* Order panel */
+    .order-panel{
+      margin: 22px 18px;
+      padding:18px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+      box-shadow: 0 10px 30px rgba(68,58,54,0.05);
+      max-width:1200px;
+    }
+    .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{display:block;font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+    input, select, textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(68,58,54,0.06);
+      background:var(--white);
+      font-size:0.95rem;
+      color:var(--dark);
+    }
+    .full{grid-column:1 / -1}
+    .note{font-size:0.9rem;color:var(--muted);margin-top:6px}
+
+    /* Footer */
+    footer.site-footer{
+      margin:28px 18px 60px;
+      padding:18px;
+      border-radius:12px;
+      text-align:center;
+      background: linear-gradient(180deg, #fff, var(--cream-1));
+      color:var(--muted);
+      font-size:0.95rem;
+      box-shadow: 0 8px 26px rgba(68,58,54,0.04);
+    }
+
+    /* Responsive */
+    @media(max-width:980px){
+      .hero-inner{grid-template-columns:1fr}
+      header.site-header{flex-direction:column;align-items:flex-start;gap:12px}
+      .top-actions{width:100%;justify-content:flex-end}
+    }
+    @media(max-width:560px){
+      .logo .brand{font-size:1.2rem}
+      .hero h1{font-size:1.8rem}
+      .hero p.lead{font-size:0.98rem}
+      .hero{padding:28px 16px}
+      .hero-illustration img{height:180px}
+      .card .media{height:160px}
+      .order-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header wrap" role="banner" aria-label="En-tête du site">
+    <!-- Inline SVG logo (stylé, cream-friendly) -->
+    <a class="logo" href="#" aria-label="Cake by NAC accueil">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <!-- soft circle -->
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#fffdf9"/>
+            <stop offset="1" stop-color="#f3e7de"/>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="58" fill="url(#g1)" stroke="#e9d9c7" stroke-width="2"/>
+        <!-- cake silhouette -->
+        <g transform="translate(14,22)" fill="#8a7168">
+          <rect x="6" y="36" width="80" height="18" rx="6" fill="#e9d9c7"/>
+          <rect x="14" y="18" width="64" height="26" rx="6" fill="#fff"/>
+          <path d="M46 6c4 2 9 2 12 0 2.5-1.6 6 4 1 8-3 2.6-9 3.4-13 1.2-4-2.3-6-8-0-9.2z" fill="#e9d9c7" opacity="0.95"/>
+        </g>
+      </svg>
+
+      <div class="title">
+        <span class="brand">Cake by NAC</span>
+        <span class="tag">Gâteaux sur-mesure · Instagram @cakebynac</span>
+      </div>
+    </a>
+
+    <div class="top-actions" role="navigation" aria-label="Liens actions">
+      <a class="btn" href="#commande">Commander</a>
+      <a class="btn secondary" href="https://instagram.com/cake_by_nac" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="region" aria-label="Bannière principale">
+    <div class="hero-inner wrap">
+      <div>
+        <h1>Des gâteaux créés pour vos plus beaux moments</h1>
+        <p class="lead">Designs artisanaux, finitions élégantes, ingrédients choisis. Commande facile, retrait ou livraison.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="#galerie">Voir la galerie</a>
+          <a class="btn secondary" href="#commande">Réserver</a>
+        </div>
+
+        <p class="note" style="margin-top:12px">Livraison sur demande · Délai conseillé: 3–5 jours ouvrés pour créations personnalisées</p>
+      </div>
+
+      <!-- Illustration (remplace l'image par une photo de ton choix dans /images) -->
+      <div class="hero-illustration" aria-hidden="true">
+        <!-- Si tu as une belle photo, remplace src par images/hero.jpg -->
+        <img src="images/1page.png" alt="Exemple de gâteau Cake by NAC — wedding cake élégant">
+        <small style="display:block;margin-top:8px;color:var(--muted)">Photo : exemple — remplace par ta photo</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <main>
+    <section id="galerie" class="gallery" aria-label="Galerie de produits">
+      <!-- 1 -->
+      <article class="card" aria-labelledby="t1">
+        <div class="media">
+          <img src="images/buffet.png" alt="Buffet Cocktail - Cake by NAC">
+        </div>
+        <h3 id="t1">Buffet / Cocktail</h3>
+        <div class="meta">
+          <div class="parts">12 parts</div>
+          <div class="muted">Prix sur demande</div>
+        </div>
+        <div style="margin-top:8px;">
+          <a class="btn" href="produit/Coktail%20%20Buffet.html">Voir</a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card" aria-labelledby="t2">
+        <div class="media">
+          <img src="images/SISI.jpg.png" alt="Wedding Cake - Cake by NAC">
+        </div>
+        <h3 id="t2">Wedding Cake ✨</h3>
+        <div class="meta">
+          <div class="parts">8 parts</div>
+          <div class="muted">Prix sur demande</div>
+        </div>
+        <div style="margin-top:8px;">
+          <a class="btn" href="produit/widding.html">Voir</a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card" aria-labelledby="t3">
+        <div class="media">
+          <img src="images/d3.png" alt="Drip Cake - Cake by NAC">
+        </div>
+        <h3 id="t3">Drip Cake</h3>
+        <div class="meta">
+          <div class="parts">6 parts</div>
+          <div class="muted">Prix sur demande</div>
+        </div>
+        <div style="margin-top:8px;">
+          <a class="btn" href="produit/Kinder.html">Voir</a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card" aria-labelledby="t4">
+        <div class="media">
+          <img src="images/N2.png" alt="Number Cake - Cake by NAC">
+        </div>
+        <h3 id="t4">Number Cake</h3>
+        <div class="meta">
+          <div class="parts">20 parts</div>
+          <div class="muted">Prix sur demande</div>
+        </div>
+        <div style="margin-top:8px;">
+          <a class="btn" href="produit/Number.html">Voir</a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card" aria-labelledby="t5">
+        <div class="media">
+          <img src="images/V1.png" alt="Verrines - Cake by NAC">
+        </div>
+        <h3 id="t5">Verrines</h3>
+        <div class="meta">
+          <div class="parts">20 verrines</div>
+          <div class="muted">Prix sur demande</div>
+        </div>
+        <div style="margin-top:8px;">
+          <a class="btn" href="produit/verine.html">Voir</a>
+        </div>
+      </article>
+    </section>
+
+    
+
+    <!-- ORDER / RESERVATION -->
+    <section id="commande" class="order-panel wrap" aria-label="Formulaire de commande">
+      <h2 style="font-family:'Playfair Display',serif;margin:0 0 10px">Réserver une création</h2>
+      <p class="note">Remplis ce formulaire et nous te contacterons pour confirmer les détails et le paiement.</p>
+
+      <form class="order-grid" style="margin-top:12px" onsubmit="event.preventDefault(); alert('Formulaire simulé — ajoute ici l’API ou email.');">
+        <div>
+          <label for="name">Nom</label>
+          <input id="name" name="name" type="text" placeholder="Ton nom" required>
+        </div>
+
+        <div>
+          <label for="phone">Téléphone / WhatsApp</label>
+          <input id="phone" name="phone" type="text" placeholder="+33 6 XX XX XX XX" required>
+        </div>
+        <script>
+  // Sélection automatique du type de gâteau
+  const productDetails = document.querySelector('.product-details');
+  const cakeTypeSelect = document.getElementById('cake-type');
+  const productName = productDetails.getAttribute('data-product');
+
+  if (cakeTypeSelect) {
+    cakeTypeSelect.value = productName; // sélection automatique
+  }
+</script>
+
+
+        <div>
+          <label for="type">Type de création</label>
+          <select id="type" name="type" required>
+            <option value="">Choisir...</option>
+            <option>Wedding Cake</option>
+            <option>Number Cake</option>
+            <option>Drip Cake</option>
+            <option>Buffet / Cocktail</option>
+            <option>Verrines</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="parts">Nombre de parts</label>
+          <input id="parts" name="parts" type="text" placeholder="Ex : 12">
+        </div>
+
+        <div class="full">
+          <label for="date">Date souhaitée</label>
+          <input id="date" name="date" type="date">
+        </div>
+
+        <div class="full">
+          <label for="notes">Détails / Allergies / Message</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Couleurs, goûts, texte sur gâteau..."></textarea>
+        </div>
+
+        <div class="full" style="display:flex;gap:12px;justify-content:flex-end;">
+          <a class="btn secondary" href="mailto:contact@cakebynac.example">Contact par mail</a>
+          <button class="btn" type="submit">Envoyer la demande</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>© <strong>Cake by NAC</strong> — Tous droits réservés · Suivez-nous sur Instagram @cakebynac</div>
+  </footer>
+
+  <!-- Petit script utile (prévisualisation rapide, animations JS minimes) -->
+  <script>
+    // Si tu veux remplacer les images d'exemple par des images réelles au chargement :
+    // Exemple : document.querySelectorAll('.media img').forEach(img => img.src = 'images/ta-photo.jpg');
+    // Script pour focal : accès clavier sur CTA
+    document.querySelectorAll('.btn').forEach(b => {
+      b.addEventListener('keydown', e => {
+        if(e.key === 'Enter') b.click();
+      });
+    });
+  </script>
+</body>
+</html>
